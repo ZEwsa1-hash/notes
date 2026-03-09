@@ -17,31 +17,35 @@ export class Store {
   }
 
   add(notice) {
-    this.#notices[notice.id] = {
-      id: notice.id,
-      title: notice.title,
-      top: notice.top,
-      left: notice.left,
-      content: notice.content,
-    };
+    this.#notices[notice.id] = this.#serialize(notice);
     this.#sync();
   }
 
   update(notice) {
     if (!this.#notices[notice.id]) return;
-    this.#notices[notice.id] = {
-      id: notice.id,
-      title: notice.title,
-      top: notice.top,
-      left: notice.left,
-      content: notice.content,
-    };
+    this.#notices[notice.id] = this.#serialize(notice);
     this.#sync();
   }
 
   remove(id) {
     delete this.#notices[id];
     this.#sync();
+  }
+
+  clearAll() {
+    this.#notices = {};
+    this.#sync();
+  }
+
+  #serialize(notice) {
+    return {
+      id: notice.id,
+      title: notice.title,
+      top: notice.top,
+      left: notice.left,
+      content: notice.content,
+      color: notice.color,
+    };
   }
 
   #sync() {

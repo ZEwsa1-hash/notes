@@ -1,5 +1,4 @@
 export function applyDragAndDrop(lm, onDragEnd) {
-  // Prevent drag when interacting with textarea
   lm.querySelector('textarea')?.addEventListener('mousedown', (e) => {
     e.stopPropagation();
   });

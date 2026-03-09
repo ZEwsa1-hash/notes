@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes</title>
+  <style>
+    @keyframes note-in {
+      from { opacity: 0; transform: scale(0.7) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes note-out {
+      from { opacity: 1; transform: scale(1) translateY(0); }
+      to   { opacity: 0; transform: scale(0.7) translateY(12px); }
+    }
+    .note-enter {
+      animation: note-in 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .note-exit {
+      animation: note-out 0.18s ease-in forwards;
+    }
+  </style>
   </head>
   <body></body>
 </html>
